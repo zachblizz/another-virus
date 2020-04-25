@@ -4,12 +4,11 @@ import { Chart } from "react-charts";
 
 import { useCountry } from "../hooks/Form";
 
-import { RecordHeader } from "./ui/RecordHeader";
-import { Row } from "./ui/Row";
+import Records from "./records";
 
-const ChartContainer = styled.div`
-    width: 1200px;
-    height: 600px;
+export const ChartContainer = styled.div`
+    width: 100%;
+    height: 500px;
 `;
 
 const ErrorHeader = styled.h3`
@@ -24,12 +23,6 @@ export default function MyChart() {
             { type: "linear", position: "left" },
         ];
     }, []);
-    const series = React.useMemo(
-        () => ({
-            showPoints: false,
-        }),
-        [],
-    );
     const records = React.useMemo(
         () => ["date", "confirmed", "death", "recovered"],
         [],
@@ -39,24 +32,11 @@ export default function MyChart() {
     return (
         <ChartContainer>
             {loading && <div>loading...</div>}
-            <Row>
-                {data &&
-                    records.map((header) => (
-                        <RecordHeader
-                            key={header}
-                            label={header}
-                            value={data[header] || 0}
-                            confirmed={header === "confirmed"}
-                            recovered={header === "recovered"}
-                            death={header === "death"}
-                        />
-                    ))}
-            </Row>
+            {data && <Records records={records} data={data} start={1} />}
             {data && (
                 <Chart
                     data={data.data}
                     axes={axes}
-                    series={series}
                     tooltip
                     getSeriesStyle={(series: any) => {
                         return {

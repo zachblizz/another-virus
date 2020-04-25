@@ -18,7 +18,7 @@ const ErrorSpan = styled.div`
 `;
 
 const FormDiv = styled.div`
-    padding: 10px;
+    padding: 10px 0px;
 `;
 
 export default function FormItem({

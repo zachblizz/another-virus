@@ -41,7 +41,7 @@ function CountryProvider({ children }: { children: React.ReactChild }) {
                             recovered: item.Recovered,
                             date: item.Date,
                         }))
-                        .reduce((all: any, item: any, idx: number) => {
+                        .reduce((all: any, item: any) => {
                             const tmpC = [new Date(item.date), item.confirmed];
                             const tmpR = [new Date(item.date), item.recovered];
                             const tmpD = [new Date(item.date), item.deaths];

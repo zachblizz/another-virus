@@ -19,10 +19,10 @@ export default function CountryForm() {
             <FormItem
                 name="country"
                 label="Country"
-                register={register({required: "Please provide a country"})}
+                register={register({ required: "Please provide a country" })}
                 error={errors.country?.message}
             />
-            <Gutter left={75} inline>
+            <Gutter left={67} inline>
                 <Button primary={true} type="submit" disabled={loading}>
                     search
                 </Button>
