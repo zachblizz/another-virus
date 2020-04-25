@@ -5,10 +5,15 @@ import { Chart } from "react-charts";
 import { useCountry } from "../hooks/Form";
 
 import Records from "./records";
+import { media } from "./ui";
 
 export const ChartContainer = styled.div`
     width: 100%;
     height: 500px;
+
+    ${media.babybear`
+        height: 400px;
+    `}
 `;
 
 const ErrorHeader = styled.h3`

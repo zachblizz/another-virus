@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { BaseProps } from "./";
+import { BaseProps, media } from "./";
 
 type ButtonProps = {
     primary?: boolean;
@@ -24,4 +24,8 @@ export const Button = styled.button`
         color: #fff;
         cursor: pointer;
     }
+
+    ${media.babybear`
+        width: 100%;
+    `}
 `;

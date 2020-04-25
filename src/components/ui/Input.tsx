@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { BaseProps } from "./";
+import { BaseProps, sizes } from "./";
 
 type InputProps = {
     error?: boolean;
@@ -14,8 +14,12 @@ export const Input = styled.input`
     color: ${(props: InputProps) => props.error ? "#fff" : "#333" };
     border-radius: 3px;
 
-    margin-right: ${(props: InputProps) => props.marginRight}px;
-    margin-left: ${(props: InputProps) => props.marginLeft}px;
-    margin-top: ${(props: InputProps) => props.marginTop}px;
-    margin-bottom: ${(props: InputProps) => props.marginBottom}px;
+    margin-right: ${(props: InputProps) => props.marginRight ?? 0}px;
+    margin-left: ${(props: InputProps) => props.marginLeft ?? 0}px;
+    margin-top: ${(props: InputProps) => props.marginTop ?? 0}px;
+    margin-bottom: ${(props: InputProps) => props.marginBottom ?? 0}px;
+
+    @media (max-width: ${sizes.babybear}px) {
+        width: 96%;
+    }
 `;

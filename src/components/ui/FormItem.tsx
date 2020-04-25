@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { Input } from "./Input";
 import { Gutter } from "./Gutter";
+import { media } from ".";
 
 type Props = {
     name: string;
@@ -19,6 +20,10 @@ const ErrorSpan = styled.div`
 
 const FormDiv = styled.div`
     padding: 10px 0px;
+
+    ${media.babybear`
+        width: 100%;
+    `}
 `;
 
 export default function FormItem({

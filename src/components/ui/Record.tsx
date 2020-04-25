@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { RecordProps } from "../records/RecordHeader";
+import { media } from ".";
 
 export const Header = styled.h3`
     color: ${({
@@ -15,6 +16,10 @@ export const Header = styled.h3`
             : confirmed
             ? "#E0BE36"
             : "#333"};
+
+    ${media.babybear`
+        margin: 0px 5px;
+    `}
 `;
 
 export const RecordContainer = styled.div`
