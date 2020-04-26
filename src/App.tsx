@@ -2,6 +2,7 @@ import React from "react";
 import { ToastContainer } from "react-toastify";
 
 import { CountryProvider } from "./hooks/Form";
+import { useToggle } from "./hooks/Toggle";
 
 import CountryForm from "./components/CountryForm";
 import { Summary } from "./components/Summary";
@@ -11,26 +12,23 @@ import { Button } from "./components/ui/Button";
 import { Container } from "./components/ui/Container";
 
 import "react-toastify/dist/ReactToastify.css";
+import { Row } from "./components/ui/Row";
 
 function App() {
-    const [show, setShow] = React.useState("summary");
+    const [value, { toggle }] = useToggle(true);
 
     return (
         <Container>
             <ToastContainer />
-            <h1>After 9 Coronas</h1>
-            <Button
-                onClick={() =>
-                    setShow((s: string) =>
-                        s === "summary" ? "country" : "summary",
-                    )
-                }
-            >
-                View {show === "summary" ? "country" : "summary"}
-            </Button>
+            <Row top={0}>
+                <h1>After 9 Coronas</h1>
+                <Button onClick={toggle}>
+                    View {value ? "country" : "summary"}
+                </Button>
+            </Row>
             <CountryProvider>
                 <>
-                    {show === "country" && (
+                    {!value && (
                         <>
                             <CountryForm />
                             <MyChart />
@@ -38,7 +36,7 @@ function App() {
                     )}
                 </>
             </CountryProvider>
-            {show === "summary" && <Summary />}
+            {value && <Summary />}
         </Container>
     );
 }

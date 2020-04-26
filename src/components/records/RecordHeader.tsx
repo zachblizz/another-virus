@@ -1,7 +1,6 @@
 import React from "react";
 
-import { Gutter } from "../ui/Gutter";
-import { RecordContainer, Header } from "../ui/Record";
+import { RecordContainer, Header, RecordLabel } from "../ui/Record";
 
 export type RecordProps = {
     label: string;
@@ -19,19 +18,11 @@ export function RecordHeader({
     recovered,
 }: RecordProps) {
     return (
-        <Gutter bottom={20}>
-            <RecordContainer>
-                <Header
-                    confirmed={confirmed}
-                    death={death}
-                    recovered={recovered}
-                >
-                    {value ?? 0}
-                </Header>
-                <Gutter top={-20} style={{ fontSize: 14 }}>
-                    {label}
-                </Gutter>
-            </RecordContainer>
-        </Gutter>
+        <RecordContainer>
+            <RecordLabel>{label}</RecordLabel>
+            <Header death={death} confirmed={confirmed} recovered={recovered}>
+                {value ?? 0}
+            </Header>
+        </RecordContainer>
     );
 }

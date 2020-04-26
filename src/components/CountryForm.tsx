@@ -6,6 +6,7 @@ import { Gutter } from "./ui/Gutter";
 import FormItem from "./ui/FormItem";
 
 import { useCountry } from "../hooks/Form";
+import { Row } from "./ui/Row";
 
 export default function CountryForm() {
     const { handleSubmit, register, errors } = useForm();
@@ -17,17 +18,21 @@ export default function CountryForm() {
 
     return (
         <form onSubmit={handleSubmit(getData)}>
-            <FormItem
-                name="country"
-                label="Country"
-                register={register({ required: "Please provide a country" })}
-                error={errors.country?.message}
-            />
-            <Gutter left={67} inline>
-                <Button primary={true} type="submit" disabled={loading}>
-                    search
-                </Button>
-            </Gutter>
+            <Row spacing="none">
+                <FormItem
+                    name="country"
+                    label="Country"
+                    register={register({
+                        required: "Please provide a country",
+                    })}
+                    error={errors.country?.message}
+                />
+                <Gutter left={7} inline>
+                    <Button primary={true} type="submit" disabled={loading}>
+                        search
+                    </Button>
+                </Gutter>
+            </Row>
         </form>
     );
 }

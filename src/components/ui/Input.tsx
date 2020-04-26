@@ -2,14 +2,18 @@ import styled from "styled-components";
 
 import { BaseProps, sizes } from "./";
 
-type InputProps = {
+type InputProps = BaseProps & {
     error?: boolean;
     ref?: any;
-} & BaseProps;
+};
 
 export const Input = styled.input`
-    padding: 5px;
-    border: 1px solid ${(props: InputProps) => props.error ? "#ff5252" : "#ccc" };
+    border-radius: 3px;
+    padding: 0.5rem;
+    width: 11rem;
+    border-radius: 3px;
+    font-size: 15px;
+    border: 2px solid ${(props: InputProps) => props.error ? "#ff5252" : "#ccc" };
     background: ${(props: InputProps) => props.error ? "#ff7474" : "#fff" };
     color: ${(props: InputProps) => props.error ? "#fff" : "#333" };
     border-radius: 3px;

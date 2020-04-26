@@ -19,14 +19,13 @@ const initialState: CountryState = {
 
 const CountryContext = React.createContext<CountryContext>(initialState);
 
-function CountryProvider({ children }: { children: React.ReactChild }) {
+function CountryProvider({ children }: { children: React.ReactNode }) {
     const [state, setState] = React.useState<CountryState>(initialState);
 
     const getData = React.useCallback(async function (values: Record<string, any>) {
         setState({ data: undefined, loading: true });
 
         try {
-            console.log("calling....")
             const resp = await fetch(
                 `https://api.covid19api.com/country/${values.country}`,
             );
